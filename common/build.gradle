@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    //支持java1.8和databinding，没有这个没办法使用databindingUtils
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+publish {
+    userOrg = 'zhaoyingtao'
+    groupId = 'com.bintray.library'
+    artifactId = 'basetools_lib'
+    publishVersion = '1.0.0'
+    desc = 'Oh hi, this is a nice description for a project, right?'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    api 'com.android.support:multidex:1.0.3'
+    //系统design
+    api "com.android.support:design:28.0.0"
+    api "com.android.support:appcompat-v7:28.0.0"
+    //图片加载库
+    api 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    //butterknife依赖库
+    api('com.jakewharton:butterknife:9.0.0-rc3') {
+        exclude module: 'support-annotations'
+        exclude module: 'support-compat'
+    }
+    //每个module都要写入这两个，否则会无法跳转和引用
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc3'
+
+    //今日头条屏幕适配方案终极版
+    api 'me.jessyan:autosize:1.1.2'
+}
