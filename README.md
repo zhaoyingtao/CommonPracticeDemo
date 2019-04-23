@@ -1,7 +1,9 @@
 [ ![Download](https://api.bintray.com/packages/zhaoyingtao/maven/basetools_lib/images/download.svg) ](https://bintray.com/zhaoyingtao/maven/basetools_lib/_latestVersion)
 
 
-经常写demo需要写很多重复代码和基本配置，为了简化引入下面库吧   
+经常写demo需要写很多重复代码和基本配置，为了简化引入下面库吧，可以使用Buttkerknife工具   
+
+![图片名称](https://github.com/zhaoyingtao/CommonPracticeDemo/blob/master/img/%E8%AF%B4%E6%98%8E%E5%9B%BE.jpg) 
 
 简单适用方法：以下三步是必须写的，否则会出问题   
 
