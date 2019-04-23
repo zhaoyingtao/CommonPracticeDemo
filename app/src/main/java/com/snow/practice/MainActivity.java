@@ -1,7 +1,6 @@
 package com.snow.practice;
 
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,7 +8,6 @@ import com.snow.common.base.BaseBasesActivity;
 import com.snow.common.tool.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseBasesActivity {
