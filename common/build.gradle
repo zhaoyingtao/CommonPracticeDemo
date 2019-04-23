@@ -17,6 +17,10 @@ android {
     dataBinding {
         enabled = true
     }
+    //上传maven需要添加这段代码
+    lintOptions {
+        abortOnError false
+    }
 }
 
 publish {
