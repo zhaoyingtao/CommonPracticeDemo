@@ -76,3 +76,16 @@ public class APPApplication extends MultiDexApplication {
     }
 }
 ```
+
+
+最后在使用butterknife的时候可能会出现运行空指针错误，不能找到控件；解决方法：
+1、在使用的model如app的build.gradle中添加如下引用
+```
+ annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc3'
+ ```
+ 2、在项目的buid.gradle中添加如下代码
+ ```
+ classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0-rc3'
+ ```
+
+
