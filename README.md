@@ -1,7 +1,7 @@
 [ ![Download](https://api.bintray.com/packages/zhaoyingtao/maven/basetools_lib/images/download.svg) ](https://bintray.com/zhaoyingtao/maven/basetools_lib/_latestVersion)
 
 
-经常写demo需要写很多重复代码和基本配置，为了简化引入下面库吧，可以使用Buttkerknife工具   
+经常写demo需要写很多重复代码和基本配置，为了简化引入下面库吧，可以使用Buttkerknife工具 
 
 ![图片名称](https://github.com/zhaoyingtao/CommonPracticeDemo/blob/master/img/%E8%AF%B4%E6%98%8E%E5%9B%BE.jpg) 
 
@@ -41,35 +41,38 @@ dependencies {
 3、写APPApplication类     
 ```
 public class APPApplication extends MultiDexApplication {
-   private String LOCAL_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()
-              + "/Android/data/com.snow.practice/";
+    private String LOCAL_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()
+            + "/Android/data/";
 
-      @Override
-      public void onCreate() {
-          super.onCreate();
-          init();
-      }
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        LOCAL_PATH = LOCAL_PATH + this.getPackageName() + "/";
+        init();
+    }
 
-      private void init() {
-          //今日头条适配配置
-          AutoSizeConfig.getInstance().getUnitsManager()
-                  .setSupportDP(false)
-                  .setSupportSP(false)
-                  .setSupportSubunits(Subunits.NONE);
-          //common依赖库的相关初始化
-          CommonLibConstant.init()
-                  .setAppContext(this)
-                  .setNoNetWorkRemind("无网络")
-                  //存储权限别忘了
-                  .setSharedPreferencesName("card_db")
-                  .setCrashSavePath(LOCAL_PATH)
-                  .setExternalNetworkIP();//要设置这个必有连网权限
-      }
+    private void init() {
+        //今日头条适配配置
+        AutoSizeConfig.getInstance().getUnitsManager()
+                .setSupportDP(false)
+                .setSupportSP(false)
+                .setSupportSubunits(Subunits.NONE);
+        //common依赖库的相关初始化
+        CommonLibConstant.init()
+                .setAppContext(this)
+                .setNoNetWorkRemind("无网络")
+                //存储权限别忘了，别忘记修改存储的数据库名
+                .setSharedPreferencesName("userview_db")
+                .setCrashSavePath(LOCAL_PATH)
+                .setExternalNetworkIP();//要设置这个必有连网权限
+        //打印的tag搜索：AndroidAutoSize
+        LogUtils.e("LOCAL_PATH==="+LOCAL_PATH);
+    }
 
-      @Override
-      protected void attachBaseContext(Context base) {
-          super.attachBaseContext(base);
-          MultiDex.install(this);
-      }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 }
 ```
